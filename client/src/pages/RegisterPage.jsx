@@ -1,9 +1,30 @@
+import { useState } from "react";
 import LoginPic from "../assets/loginPic.png"
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const RegisterPage = () => {
 
-    const loginHeight = `calc(100vh - 56px)`;
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const registerUser = async(e) => {
+    e.preventDefault();
+    try{
+      await axios.post('/register', {
+      name,
+      email,
+      password
+    });
+    }
+    catch(e){
+      
+    }
+    
+  }
+
+  const loginHeight = `calc(100vh - 56px)`;
 
   return (
     <div className="flex px-5 md:px-12 py-4" style={{ height: loginHeight }}>
@@ -25,18 +46,30 @@ const RegisterPage = () => {
           <h2 className="text-gray-600">Get started to find your Perfect Rental Haven</h2>
           <div className="h-[1px] w-24 bg-gray-200 mt-2 mb-10"></div>
         </div>
-        <form className="flex flex-col gap-5 w-full px-5 lg:px-24">
+        <form className="flex flex-col gap-5 w-full px-5 lg:px-24" onSubmit={registerUser}>
         <div>
-              <label className="flex font-medium text-gray-600 mb-1" for="name">Name<div className="text-red-500">*</div></label>
-              <input id="name" type="text" placeholder="Enter your name"/>
+              <label className="flex font-medium text-gray-600 mb-1" htmlFor="name">Name<div className="text-red-500">*</div></label>
+              <input id="name" type="text" placeholder="Enter your name"
+                value={name}
+                required
+                onChange={(e) => setName(e.target.value)}
+              />
             </div>
             <div>
-              <label className="flex font-medium text-gray-600 mb-1" for="email">Email<div className="text-red-500">*</div></label>
-              <input id="email" type="email" placeholder="Enter your email"/>
+              <label className="flex font-medium text-gray-600 mb-1" htmlFor="email">Email<div className="text-red-500">*</div></label>
+              <input id="email" type="email" placeholder="Enter your email" 
+                value={email}
+                required
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
             <div>
-              <label className="flex font-medium text-gray-600 mb-1" for="pwd">Password<div className="text-red-500">*</div></label>
-              <input id="pwd" type="password" placeholder="Enter your password"/>
+              <label className="flex font-medium text-gray-600 mb-1" htmlFor="pwd">Password<div className="text-red-500">*</div></label>
+              <input id="pwd" type="password" placeholder="Enter your password" 
+                value={password}
+                required
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </div>
             <div className="w-full">
               <button className="w-full primary">
