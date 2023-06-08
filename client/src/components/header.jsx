@@ -4,7 +4,7 @@ import {MdMenu} from "react-icons/md"
 import { Link } from "react-router-dom"
 
 const Header = () =>{
-    return (<header className='flex px-12 justify-between items-center'>
+    return (<header className='flex px-12 h-14 justify-between items-center'>
     <a href="/">
       <img src={logo} alt="haven logo" className='h-9'/>
     </a>
