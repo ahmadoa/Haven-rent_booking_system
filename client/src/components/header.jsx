@@ -4,11 +4,11 @@ import {MdMenu} from "react-icons/md"
 import { Link } from "react-router-dom"
 
 const Header = () =>{
-    return (<header className='flex px-12 h-14 justify-between items-center'>
+    return (<header className='flex px-5 md:px-12 h-14 justify-between items-center'>
     <a href="/">
       <img src={logo} alt="haven logo" className='h-9'/>
     </a>
-    <div className='flex justify-between items-center gap-3 border border-gray-300 shadow-md hover:shadow-lg transition-all ease-in-out duration-300 rounded-full py-1 px-4'>
+    <div className='hidden lg:flex justify-between items-center gap-3 border border-gray-300 shadow-md hover:shadow-lg transition-all ease-in-out duration-300 rounded-full py-1 px-4'>
       <div className='font-semibold'>Anywhere</div>
       <div className='border h-5 border-gray-300'></div>
       <div className='font-semibold'>Any week</div>
